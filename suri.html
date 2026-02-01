@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Bir Tık Pişmanlık 😏</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    body{
+        margin:0;
+        height:100vh;
+        background: radial-gradient(circle at top, #ff4d6d, #2b2d42);
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        font-family: Arial, Helvetica, sans-serif;
+        overflow:hidden;
+        color:white;
+        text-align:center;
+    }
+    .card{
+        background:rgba(0,0,0,0.35);
+        padding:25px;
+        border-radius:25px;
+        max-width:330px;
+        box-shadow:0 30px 60px rgba(0,0,0,0.4);
+        animation: pop 0.8s ease;
+    }
+    h1{font-size:22px;margin-bottom:10px;}
+    p{font-size:15px;line-height:1.4;}
+    button{
+        margin-top:15px;
+        padding:10px 18px;
+        border:none;
+        border-radius:20px;
+        cursor:pointer;
+        font-size:14px;
+        transition:.2s;
+    }
+    .yes{background:#4ade80;color:#064e3b;}
+    .no{background:#f87171;color:#7f1d1d;position:absolute;}
+    button:hover{transform:scale(1.1);}
+    @keyframes pop{
+        from{transform:scale(0.5);opacity:0}
+        to{transform:scale(1);opacity:1}
+    }
+</style>
+</head>
+<body>
+
+<div class="card" id="box">
+    <h1>⚠️ CİDDİ UYARI ⚠️</h1>
+    <p>
+        Bu siteyi açan kişi<br>
+        <b>fazla tatlıdır</b> 🍭<br>
+        Yan etkiler:<br>
+        - Sırıtma<br>
+        - Utanma<br>
+        - “Bu çocuk mal mı?” hissi
+    </p>
+    <button class="yes" onclick="next()">Devam Et (Hata) 😌</button>
+</div>
+
+<script>
+let step = 0;
+
+const screens = [
+`<h1>🧪 Bilimsel Araştırma</h1>
+<p>
+Yapılan deneylere göre;<br>
+Sen = çok güzelsin 😳<br>
+Ben = sana aşırı düşmüşüm 🤡<br>
+Sonuç = rezalet
+</p>
+<button class="yes" onclick="next()">Devam (Daha Kötüsü Var)</button>`,
+
+`<h1>🚨 İTİRAF 🚨</h1>
+<p>
+Normalde cool biriyim.<br>
+Ama sen mesaj atınca<br>
+<b>telefonu düşürüyorum.</b> 📱💥
+</p>
+<button class="yes" onclick="next()">Devam (Utanç)</button>`,
+
+`<h1>❓ ÖNEMLİ SORU</h1>
+<p>
+Beni seviyor musun?<br>
+Dikkatli cevap ver.<br>
+Yanlış cevapta site bozulabilir 😈
+</p>
+<button class="yes" onclick="love()">Evet ❤️</button>
+<button class="no" id="noBtn">Hayır 💀</button>`
+];
+
+function next(){
+    document.getElementById("box").innerHTML = screens[step];
+    step++;
+}
+
+document.addEventListener("mousemove", e=>{
+    const btn = document.getElementById("noBtn");
+    if(!btn) return;
+    btn.style.left = Math.random()*80 + "vw";
+    btn.style.top = Math.random()*80 + "vh";
+});
+
+function love(){
+    document.getElementById("box").innerHTML = `
+    <h1>🎉 TEBRİKLER 🎉</h1>
+    <p>
+    Doğru cevabı seçtin 😌<br>
+    Ödülün:<br>
+    <b>Ben.</b> 🤡❤️<br><br>
+    Yan etki devam eder:
+    Seni çok seviyorum.
+    </p>
+    `;
+}
+</script>
+
+</body>
+</html>
